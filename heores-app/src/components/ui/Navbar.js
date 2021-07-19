@@ -6,10 +6,11 @@ export const Navbar = () => {
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
             
             <Link 
-                className="navbar-brand" 
+                className="navbar-brand"
+                style = {{ marginLeft: 10 }}
                 to="/"
             >
-                Asociaciones
+                Heroes
             </Link>
 
             <div className="navbar-collapse">
@@ -32,6 +33,17 @@ export const Navbar = () => {
                     >
                         DC
                     </NavLink>
+
+                    <NavLink 
+                        activeClassName="active"
+                        className="nav-item nav-link" 
+                        exact
+                        to="/search"
+                    >
+                        Search
+                    </NavLink>
+
+                    
                 </div>
             </div>
 
