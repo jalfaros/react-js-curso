@@ -72,7 +72,7 @@ export const SearchScreen = ({ history }) => {
                             
                                  ))
                             :
-                                <div class="alert alert-info text-center" role="alert">
+                                <div className="alert alert-info text-center" role="alert">
                                     <p>Heroe: "<b>{ query }</b>" does not exists</p>
                                 </div>
                     }
