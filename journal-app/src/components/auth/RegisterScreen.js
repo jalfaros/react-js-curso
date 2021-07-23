@@ -1,12 +1,34 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useForm } from '../../hooks/useForm'
 
 export const RegisterScreen = () => {
+
+   const [ formValues, handleInputChange ] = useForm({
+       name     :   'Ignacio A',
+       email    :   'jalfaros@estudiantec.cr',
+       password :   'converse',
+       password2:   'converse'
+   });
+
+   const { name, email, password, password2 } = formValues;
+
+   const handleRegister = ( e ) => {
+       e.preventDefault();
+
+       //console.log( formValues );
+   };
+
+   const isFormValid = () => {
+       //TODO
+   }
+
+
     return (
         <>
             <h3 className="auth__title" >Register</h3>
 
-            <form>
+            <form onSubmit={ handleRegister }>
 
                 <input
                     className="auth__input"
@@ -14,6 +36,8 @@ export const RegisterScreen = () => {
                     placeholder="Name"
                     name="name"
                     autoComplete="off"
+                    value={ name }
+                    onChange={ handleInputChange }
                 />
 
 
@@ -24,6 +48,8 @@ export const RegisterScreen = () => {
                     placeholder="Email"
                     name="email"
                     autoComplete="off"
+                    value={ email }
+                    onChange={ handleInputChange }
                 />
 
 
@@ -32,14 +58,18 @@ export const RegisterScreen = () => {
                     type="password"
                     placeholder="Password"
                     name="password"
-                />
+                    value={ password }
+                    onChange={ handleInputChange }
+                    />
 
                 <input
                     className="auth__input"
                     type="password"
                     placeholder="Re-enter password"
                     name="password2"
-                />
+                    value={ password2 }
+                    onChange={ handleInputChange }
+                    />
 
                 <button
                     className="btn btn-primary btn-block mt-1"
