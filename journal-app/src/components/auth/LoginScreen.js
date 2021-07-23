@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import {  googleLogin, startLoginEmailPassword } from '../../actions/auth'
@@ -10,9 +10,13 @@ export const LoginScreen = () => {
 
     const dispatch = useDispatch(); //Accedemos directamente al dispatch del store y este mediante la acción escoge el reducer correspondient
 
+    const { loading } = useSelector(state => state.ui)
+
+    console.log( loading )
+
     const [ formValues, handleInputChange ] = useForm({
         email: 'jalfaros@estudiantec.cr',
-        password: '123456'
+        password: 'converse'
     });
 
     const { email, password } = formValues;
@@ -57,6 +61,7 @@ export const LoginScreen = () => {
                 <button
                     className="btn btn-primary btn-block mt-1"
                     type="submit"
+                    disabled={ loading }
 
                 >
                     Login
@@ -68,6 +73,7 @@ export const LoginScreen = () => {
                     <div
                         className="google-btn"
                         onClick={ handleGoogleLogin }
+                        
                     >
                         <div className="google-icon-wrapper">
                             <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
